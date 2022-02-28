@@ -1,8 +1,9 @@
 const router = require("express").Router();
 
-router.get("/", (req, res, next) => {
-  res.json("All good in here");
-});
 
 
-module.exports = router;
+router.use("/auth", require('./auth.routes'))
+//router.use("/user", require('./profile.routes'))
+//router.use("/vehicle", require('./vehicle.routes'))
+//router.use("/alert", require("./auth.routes"))
+module.exports = router
