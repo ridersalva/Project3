@@ -9,7 +9,7 @@ const alertSchema = new Schema({
         enum: ['CAMBIO DE ACEITE', 'CAMBIO PASTILLAS DE FRENO', 'ENGRASADO', 'REVISIÓN GENERAL', 'HINCHADO DE RUEDAS', 'CAMBIO DE LIMPIA PARABRISAS'
             , 'LIMPIEZA', 'SUSPENSIONES']
     },
-    ////////////////////// esto es un comment////////////
+  
     createdAt: {
         type: Date,
         required: true
