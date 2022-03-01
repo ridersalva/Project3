@@ -1,8 +1,6 @@
 .App {
   text-align: center;
-  background-image: url("/client/public/img/nasa-6-jTZysYY_U-unsplash.jpg");
 }
-
 
 .App-header {
   background-color: #282c34;
@@ -27,4 +25,3 @@
     transform: rotate(360deg);
   }
 }
-
