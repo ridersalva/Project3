@@ -10,22 +10,20 @@ const User = require("../models/User.model")
 const saltRounds = 10
 
 
-router.get('/register', (req, res, next) => { res.send("caca") })
-
 router.post('/register', (req, res, next) => {
 
-    const { email, password, username } = req.body
+    const { username, email, password } = req.body
 
     if (username === '' || email === '' || password === '') {
         res.status(400).json({ message: "Provide email, password and name" })
         return
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
-    if (!emailRegex.test(email)) {
-        res.status(400).json({ message: 'Provide a valid email address.' })
-        return
-    }
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+    // if (!emailRegex.test(email)) {
+    //     res.status(400).json({ message: 'Provide a valid email address.' })
+    //     return
+    // }
 
     // const pwdRegax = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
     // if (!pwdRegax.test(password) {
@@ -42,13 +40,15 @@ router.post('/register', (req, res, next) => {
             }
 
             const salt = bcrypt.genSaltSync(saltRounds)
+            console.log("salt generated")
             const hashedPassword = bcrypt.hashSync(password, salt)
-
+            console.log("pass encrypted")
             return User.create({ username, email, password: hashedPassword })
         })
 
         //saca detalles del usuario creado
         .then((createdUser) => {
+            console.log("user created")
             const { email, username, _id } = createdUser
 
             const user = { email, username, _id }
