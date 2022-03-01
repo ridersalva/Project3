@@ -12,11 +12,13 @@ const userSchema = new Schema({
 
     email: {
         type: String,
+        unique: true,
         required: true,
     },
     role: {
         type: String,
-        enum: ['USER', 'ADMIN']
+        enum: ['USER', 'ADMIN'],
+        default: "USER"
     },
 },
 
@@ -25,5 +27,7 @@ const userSchema = new Schema({
     }
 )
 const User = model("User", userSchema);
+
+User.syncIndexes()
 
 module.exports = User;

@@ -1,8 +1,12 @@
 const mongoose = require('mongoose')
 const { Schema, model } = require("mongoose");
-const { stringify } = require('querystring');
+
 
 const vehicleSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
     photo: {
         type: String,
         default: "link"
@@ -19,7 +23,6 @@ const vehicleSchema = new Schema({
         enum: ['MOTOR', 'NOMOTOR'],
         required: true
     },
-
     identifier: {
         classType: {
             type: String,
@@ -27,7 +30,6 @@ const vehicleSchema = new Schema({
         },
         value: String,
         required: true
-
     },
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
 },
@@ -36,4 +38,7 @@ const vehicleSchema = new Schema({
     }
 )
 const Vehicle = model("Vehicle", vehicleSchema);
+
+Vehicle.syncIndexes()
+
 module.exports = Vehicle
