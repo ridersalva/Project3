@@ -2,8 +2,8 @@ import React from 'react'
 import {Navbar as NavigationBar, Nav,Container, Row}  from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import{faHouse} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 
 
