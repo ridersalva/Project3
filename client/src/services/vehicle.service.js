@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-class AuthService {
+class VehicleService {
 
 
     constructor() {
-        this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/auth` })
+        this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/vehicle` })
     }
 
     credentials(credentials) {
@@ -20,4 +20,4 @@ class AuthService {
 
 const authService = new AuthService()
 
-export default authService
+export default VehicleService

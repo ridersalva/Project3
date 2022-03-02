@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button,Container,Row } from 'react-bootstrap'
+import { Button, Container, Row } from 'react-bootstrap'
 import './Style.css'
 
-function Home() {
+const HomePage = () => {
     return (
         <div className="Home">
             <Container>
@@ -16,4 +16,4 @@ function Home() {
     )
 }
 
-export default Home
+export default HomePage

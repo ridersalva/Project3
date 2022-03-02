@@ -1,14 +1,21 @@
 import { Routes, Route } from 'react-router-dom'
-import Home from '../pages/HomePage'
-import Profile from '../pages/ProfilePage'
-import TestPage from '../pages/TestPage'
 
-const AppRoutes=()=>{
-    return(
+
+import HomePage from '../pages/HomePage'
+import ProfilePage from '../pages/ProfilePage'
+import TestPage from '../pages/TestPage'
+import AlertPage from '../pages/AlertsPage'
+import VehiclePage from '../pages/VehiclesPage'
+
+const AppRoutes = () => {
+    return (
         <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="/Profile" element={<Profile />} />
-            <Route path="/test" element={<TestPage/>}/>
+            <Route path="/" element={<TestPage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/user" element={<ProfilePage />} />
+            <Route path="/user/alerts" element={<AlertPage />} />
+            <Route path="/user/vehicles/" element={<VehiclePage />} />
+
         </Routes>
     )
 }

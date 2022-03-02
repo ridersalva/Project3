@@ -6,7 +6,7 @@ const Alert = require("../models/Alert.model")
 
 ////////////////// L I S T  A L L////////////////////////
 
-router.get('/alert/allalerts', isAuthenticated, (req, res, next) => {
+router.get('/allalerts', isAuthenticated, (req, res, next) => {
 
     let allPromise = []
     Vehicle
@@ -23,7 +23,7 @@ router.get('/alert/allalerts', isAuthenticated, (req, res, next) => {
 
 ///////////////// C R E A T E  O N E /////////////////////////
 
-router.post("/alert/create", (req, res) => {
+router.post("/create", (req, res) => {
 
     Alert
         .create({ ...req.body })//importante pasar el id del vehiculo a traves de un campo oculto
@@ -33,7 +33,7 @@ router.post("/alert/create", (req, res) => {
 
 //////////////////// L I S T  O N E  //////////////////////////
 
-router.get('/alert/:alert_id', (req, res, next) => {
+router.get('/:alert_id', (req, res, next) => {
 
     const { alert_id } = req.params
 
@@ -45,7 +45,7 @@ router.get('/alert/:alert_id', (req, res, next) => {
 
 ///////////////// E D I T  O N E /////////////////////////
 
-router.put('/alert/:alert_id', (req, res, next) => {
+router.put('/:alert_id', (req, res, next) => {
 
     const { alert_id } = req.params
 
@@ -57,7 +57,7 @@ router.put('/alert/:alert_id', (req, res, next) => {
 
 })
 
-router.delete("/alert/:alert_id", (req, res, next) => {
+router.delete(":alert_id", (req, res, next) => {
 
     const { alert_id } = req.params
 

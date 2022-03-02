@@ -6,11 +6,12 @@ const Vehicle = require("../models/Vehicle.model")
 
 ////////////////// L I S T  A L L ////////////////////////
 
-router.get('/vehicle/allvehicles', isAuthenticated, (req, res, next) => {
+//router.get('/allvehicles', isAuthenticated, (req, res, next) => {
+router.get('/allvehicles', (req, res, next) => {
 
     Vehicle
-        //.populate owner?
-        .find({ owner: req.payload._id }) //owner: req.payload
+        //.find({ owner: req.payload._id })
+        .find({ owner: req.payload._id })
         .select("name photo identifier")
         .then(result => res.json(result))
         .catch(err => res.status(500).json(err))
@@ -18,29 +19,31 @@ router.get('/vehicle/allvehicles', isAuthenticated, (req, res, next) => {
 
 ///////////////// C R E A T E  O N E /////////////////////////
 
-router.post("/vehicle/create", isAuthenticated, (req, res) => {
+// router.post("/create", isAuthenticated, (req, res,next) => {
+router.post("/create", (req, res) => {
 
     Vehicle
-        .create({ ...req.body, owner: req.payload._id })
+        //.create({ ...req.body, owner: req.payload._id })
+        .create({ ...req.body })
         .then(result => res.status(200).json(result))
         .catch(err => res.status(500).json(err))
 })
 
 //////////////////// L I S T  O N E //////////////////////////
 
-router.get('/vehicle/:vehicle_id', (req, res, next) => {
+router.get('/:vehicle_id', (req, res, next) => {
 
     const { vehicle_id } = req.params
 
     Vehicle
         .findById(vehicle_id)
-        .then(result => res.json(result)) //result.data
+        .then(result => res.json(result))
         .catch(err => res.status(500).json(err))
 })
 
 ///////////////// E D I T  O N E /////////////////////////
 
-router.put("/vehicle/:vehicle_id", (req, res, next) => {
+router.put("/:vehicle_id", (req, res, next) => {
 
     const { vehicle_id } = req.params
 
@@ -52,7 +55,7 @@ router.put("/vehicle/:vehicle_id", (req, res, next) => {
 
 })
 
-router.delete("/vehicle/:vehicle_id", (req, res, next) => {
+router.delete("/:vehicle_id", (req, res, next) => {
 
     const { vehicle_id } = req.params
 
