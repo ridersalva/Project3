@@ -8,3 +8,7 @@
     border-color:  solid 3px black;
     font-size: 30px;
 }
+.App{
+    display:flex;
+   justify-items: center;
+}

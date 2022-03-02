@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar/Navbar'
 import {Link} from 'react-router-dom'
 import {Container,Row,Button} from 'react-bootstrap'
+import './Style.css'
 
 
  function Profile() {
