@@ -1,22 +1,22 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Navbar'
-import {Link} from 'react-router-dom'
-import {Container,Row,Button} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { Container, Row, Button } from 'react-bootstrap'
 import './Style.css'
 
 
- function Profile() {
-  return (
-      <main className="Profile">
-          <Container>
-              <Row>
-                  <Link to="#"><Button variant="primary" className="start">Start</Button>
-                  </Link>
-              </Row>
-          </Container>
-          <Navbar/>
-      </main>
-  )
+function Profile() {
+    return (
+        <main className="Profile">
+            <Container>
+                <Row>
+                    <Link to="#"><Button variant="primary" className="start">Start</Button>
+                    </Link>
+                </Row>
+            </Container>
+            <Navbar />
+        </main>
+    )
 }
 
 export default Profile

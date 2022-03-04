@@ -5,19 +5,38 @@ class VehicleService {
 
     constructor() {
         this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/vehicle` })
+
+        this.api.interceptors.request.use((config) => {
+
+            const storedToken = localStorage.getItem("authToken");
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bearer ${storedToken}` }
+            }
+
+            return config
+        })
     }
 
-    credentials(credentials) {
-        return this.api.post('/credentials', credentials)
+    createVehicle(data) {
+        return this.api.post('/create', data)
     }
 
-
-    verify(token) {
-        return this.api.get('/verification', { headers: { Authorization: `Bearer ${token}` } })
+    getAllVehicles = () => {
+        return this.api.get('/allVehicles')
+    }
+    getOneVehicle = _id => {
+        return this.api.get(`/${_id}`)
+    }
+    editOneVehicle = (data) => {
+        return this.api.put(`/${data._id}`, data)
+    }
+    deleteOneVehicle = _id => {
+        return this.api.delete(`/${_id}`)
     }
 
 }
 
-const authService = new AuthService()
+const vehicleService = new VehicleService()
 
-export default VehicleService
+export default vehicleService

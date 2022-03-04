@@ -6,11 +6,10 @@ const Vehicle = require("../models/Vehicle.model")
 
 ////////////////// L I S T  A L L ////////////////////////
 
-//router.get('/allvehicles', isAuthenticated, (req, res, next) => {
-router.get('/allvehicles', (req, res, next) => {
+// router.get('/allvehicles', isAuthenticated, (req, res, next) => {
+router.get('/allVehicles', (req, res, next) => {
 
     Vehicle
-        //.find({ owner: req.payload._id })
         .find({ owner: req.payload._id })
         .select("name photo identifier")
         .then(result => res.json(result))
@@ -19,12 +18,12 @@ router.get('/allvehicles', (req, res, next) => {
 
 ///////////////// C R E A T E  O N E /////////////////////////
 
-// router.post("/create", isAuthenticated, (req, res,next) => {
-router.post("/create", (req, res) => {
+// router.post("/create", isAuthenticated, (req, res, next) => {
+router.post("/create", (req, res, next) => {
+
 
     Vehicle
-        //.create({ ...req.body, owner: req.payload._id })
-        .create({ ...req.body })
+        .create({ ...req.body, owner: req.payload._id })
         .then(result => res.status(200).json(result))
         .catch(err => res.status(500).json(err))
 })

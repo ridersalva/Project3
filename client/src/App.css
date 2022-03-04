@@ -1,7 +1,14 @@
 .App {
   text-align: center;
 }
-
+.square{
+  background-color: #fbb925;
+  border-radius: 3%  ;
+  justify-content: center;
+  color: azure;
+  border-bottom: #282c34 solid 15px;
+  border-right:#282c34 solid 15px ;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

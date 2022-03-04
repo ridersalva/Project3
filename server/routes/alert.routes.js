@@ -6,9 +6,10 @@ const Alert = require("../models/Alert.model")
 
 ////////////////// L I S T  A L L////////////////////////
 
-router.get('/allalerts', isAuthenticated, (req, res, next) => {
+router.get('/allAlerts', isAuthenticated, (req, res, next) => {
 
     let allPromise = []
+
     Vehicle
         .find({ owner: req.payload._id })
         .then(result => {
@@ -56,6 +57,7 @@ router.put('/:alert_id', (req, res, next) => {
 
 
 })
+/////////////////  D E L E T E   O N E /////////////////////////
 
 router.delete(":alert_id", (req, res, next) => {
 

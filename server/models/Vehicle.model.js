@@ -18,7 +18,7 @@ const vehicleSchema = new Schema(
 
         },
         purchaseDate: {
-            type: Number
+            type: String
         },
         vehicleType: {
             type: String,
