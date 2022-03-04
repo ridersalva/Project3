@@ -1,11 +1,13 @@
-.Nav{
-    color:blue;
-    background-color: brown;
-    font-size: 20px;
-    text-decoration: none;
+.Navv{
+    background-color: #8b9395;
+     display: flex;
+    justify-content: space-around;
+    align-items: center;
+ width: 100%;
+ height: 100px;
 }
-a {
-    color:aliceblue;
-    text-decoration: none;
-    padding: 22px;
+
+img{
+    width: 80px;
+    margin: 3px;
 }
