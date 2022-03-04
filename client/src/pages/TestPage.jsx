@@ -19,10 +19,10 @@ const TestPage = () => {
       <hr />
       <VehiclePage />
       <hr />
-    <br/><br/>
-    <br/><br/>
+      <br /><br />
+      <br /><br />
       <hr />
-      
+
     </>
   )
 }

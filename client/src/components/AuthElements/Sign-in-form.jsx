@@ -1,4 +1,4 @@
-import "./Sign-in-form.css"
+import "./SignUpForm.css"
 import { Form, Button, Image } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
@@ -7,7 +7,7 @@ const SignIn = () => {
     return (
 
         <Form className="form text-center" >
-       
+
 
             <Form.Group className="mb-3 text-start" controlId="usernameInput">
                 <Form.Label className="label">Nombre de usuario</Form.Label>
