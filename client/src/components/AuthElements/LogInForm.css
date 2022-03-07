@@ -1,27 +1,37 @@
+.lForm{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.btn-info{
+    border-color: #fff;
+}
 .img-fluid {
     width: 40%;
     margin-bottom: 10%;
 }
 
 .label {
-    color: #000;
+    color: white;
     font-size: 1em;
 }
 
 .button {
-    background-color: #0E2B55;
-    border-radius: 50px;
+    background-color: transparent;
+    border-radius:  solid white 50px;
     color: #fff;
     padding: 0.6em 6em;
     margin: 1em 0;
 }
 
 .input {
-    background-color: #4EACCE;
-    border-radius: 50px;
+    background-color: white;
+    border-radius: 50px solid white;
     color: #fff;
 }
 
 .input::placeholder {
     color: lightgrey;
+}
+.lForm a{
+    text-decoration: none;
 }

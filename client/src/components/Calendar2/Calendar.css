@@ -1,0 +1,38 @@
+
+.calendar{
+    border-radius: 16px;
+    padding: 10px;
+    margin-top: 30px;
+    background-color: #2b607c;
+}
+.day-names, .days{
+      width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    border: solid 2px  white;
+    font-size: 20px;
+}
+.day{
+    border-right: solid 2px  white;
+    width: 100%;
+      cursor:pointer;
+}
+.header{
+    background-color:#8b9395;
+display: flex;
+justify-content: space-between;
+align-items: center;
+    width: 100%;
+    padding: 20px;
+    font-size: 40px;
+    border-top: 20px;
+}
+.previous, .next{
+    cursor:pointer;
+    font-size: 20px;
+}
+.selected{
+    background-color: #8b9395;
+}
