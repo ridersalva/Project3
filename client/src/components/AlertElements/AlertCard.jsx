@@ -26,11 +26,13 @@ const AlertCard = ({ name, initializedAt, dueAt, _id, deleteAlert, refreshAlerts
         <>
 
             <ListGroup.Item key={_id}> <div className="alertDetails" onClick={() => setEditing(true)}>
+
                 <p>{name}</p>
                 <p>{formatDate(initializedAt)}</p>
                 <p>{formatDate(dueAt)}</p>
+
             </div>
-                <Button variant="warning" onClick={() => deleteAlert(_id)}>Delete alert</Button>
+                <Button variant="danger" onClick={() => deleteAlert(_id)}>X</Button>
             </ListGroup.Item>
 
             <Modal show={editing} onHide={closeAlertModal} size="lg">
