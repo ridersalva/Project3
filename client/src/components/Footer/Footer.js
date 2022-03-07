@@ -23,14 +23,9 @@ function Footer() {
             <h1>Hello {user}</h1>
          </NavLink>
           <Link to="#">
-          <Button>
-            + Vehcicle
-          </Button>
-          </Link>
-          <Link to="#">
-          <Button>
-            + Alert
-          </Button>
+            <Button>
+              Log Out
+            </Button>
           </Link>
         </Container>
       </Navbar>

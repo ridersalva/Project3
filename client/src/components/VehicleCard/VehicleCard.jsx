@@ -22,14 +22,13 @@ const VehicleCard = (props) => {
                 <ListGroupItem>Vestibulum at eros</ListGroupItem>
             </ListGroup>
             <Card.Body>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
+                <Card.Link href="#">Alerts</Card.Link>
+                <Card.Link href="#">Edit</Card.Link>
+                <Card.Link href="#">Delete</Card.Link>
             </Card.Body>
         </Card>
 
     )
-
-
 }
 
 export default VehicleCard

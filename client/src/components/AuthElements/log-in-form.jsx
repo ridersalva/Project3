@@ -5,9 +5,9 @@ import { Link } from "react-router-dom"
 const LogIns = () => {
 
     return (
+        <div className="lForm">
         <Form className="form text-center">
-            <Image className="img-fluid" fluid src="./assets/asobalImage1.png" />
-
+            
             <Form.Group className="mb-3 text-start" controlId="LogUserInput">
                 <Form.Label className="label">Dirección de correo</Form.Label>
                 <Form.Control className="input" type="email" placeholder="Nombre de usuario" />
@@ -25,6 +25,7 @@ const LogIns = () => {
             <Form.Text><span>¿No tienes cuenta aún? </span></Form.Text>
             <Link to="/register"> Regístrate</Link>
         </Form>
+        </div>
     )
 }
 

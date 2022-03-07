@@ -9,10 +9,9 @@ import LogIn from '../pages/AuthPages/LogIn'
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/signUp" element={<SignUp />} />
-            <Route path="/logIn" element={<LogIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<LogIn />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/user" element={<ProfilePage />} />
             <Route path="/user/alerts" element={<AlertPage />} />
             <Route path="/user/vehicles/" element={<VehiclePage />} />
         </Routes>

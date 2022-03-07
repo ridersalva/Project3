@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 const SignIn = () => {
 
     return (
-
+<div class='sForm'>
         <Form className="form text-center" >
 
 
@@ -29,7 +29,7 @@ const SignIn = () => {
                 Registrarse
             </Button></Link>
         </Form>
-
+        </div>
     )
 }
 

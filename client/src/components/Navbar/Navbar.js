@@ -13,7 +13,7 @@ function Navbar() {
       <Nav className='Navv'>
         <Link to="/user/vehicles/" ><Image src={clip} alt='vehicles' /></Link>
         <Link to="/user/alerts">< Image src={bell} alt="alerts" /></Link>
-        <Link to="/user"><Image src={home} alt='home' /></Link>
+        <Link to="/home"><Image src={home} alt='home' /></Link>
       </Nav>
     </NavigationBar>
   )
