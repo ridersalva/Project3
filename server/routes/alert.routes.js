@@ -4,6 +4,18 @@ const { isAuthenticated } = require('./../middlewares/jwt.middleware')
 const Vehicle = require("../models/Vehicle.model")
 const Alert = require("../models/Alert.model")
 
+
+///////////////// C R E A T E  O N E /////////////////////////
+
+router.post("/create", (req, res) => {
+
+    Alert
+        .create({ ...req.body })
+        .then(result => res.status(200).json(result))
+        .catch(err => res.status(500).json(err))
+})
+
+
 ////////////////// L I S T  A L L////////////////////////
 
 router.get('/allAlerts', isAuthenticated, (req, res, next) => {
@@ -22,17 +34,19 @@ router.get('/allAlerts', isAuthenticated, (req, res, next) => {
         .catch(err => res.status(500).json(err))
 })
 
-///////////////// C R E A T E  O N E /////////////////////////
 
-router.post("/create", (req, res) => {
+///////// L I S T  A L E R T S  O F  O N E  V E H I C L E //////
+
+router.get('/vehicle/:vehicle_id', (req, res, next) => {
+
+    const { vehicle_id } = req.params
 
     Alert
-        .create({ ...req.body })//importante pasar el id del vehiculo a traves de un campo oculto
-        .then(result => res.status(200).json(result))
+        .find({ vehicle: vehicle_id })
+        .then(result => res.json(result))
         .catch(err => res.status(500).json(err))
 })
-
-//////////////////// L I S T  O N E  //////////////////////////
+/////////// L I S T  O N E   ////////
 
 router.get('/:alert_id', (req, res, next) => {
 
@@ -55,11 +69,12 @@ router.put('/:alert_id', (req, res, next) => {
         .then(result => res.status(200).json(result))
         .catch(err => res.status(500).json(err))
 
-
 })
+
+
 /////////////////  D E L E T E   O N E /////////////////////////
 
-router.delete(":alert_id", (req, res, next) => {
+router.delete("/:alert_id", (req, res, next) => {
 
     const { alert_id } = req.params
 

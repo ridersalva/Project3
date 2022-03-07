@@ -1,15 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import { Button, Container, Row } from 'react-bootstrap'
 import './Style.css'
+import Cal from "../components/CalendarElements/Cal"
+import AlertList from '../components/AlertElements/AlertList'
 
 const HomePage = () => {
     return (
         <div className="Home">
             <Container>
                 <Row>
-                    <Link to="#"><Button variant="primary" className="start">Start</Button>
-                    </Link>
+                    <Cal />
+                </Row>
+                <Row>
+                    <AlertList />
                 </Row>
             </Container>
         </div>

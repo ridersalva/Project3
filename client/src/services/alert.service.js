@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-class VehicleService {
+class AlertService {
 
 
     constructor() {
@@ -22,14 +22,18 @@ class VehicleService {
         return this.api.post('/create', data)
     }
 
-    getAllAllerts = () => {
+    getUserAlerts = () => {
         return this.api.get('/allAlerts')
+    }
+
+    getVehicleAlerts = (vehicle_id) => {
+        return this.api.get(`/vehicle/${vehicle_id}`)
     }
     getOneAlert = _id => {
         return this.api.get(`/${_id}`)
     }
-    editOneAlert = (data) => {
-        return this.api.put(`/${data._id}`, data)
+    editOneAlert = (_id, data) => {
+        return this.api.put(`/${_id}`, data)
     }
     deleteOneAlert = _id => {
         return this.api.delete(`/${_id}`)
@@ -37,6 +41,6 @@ class VehicleService {
 
 }
 
-const vehicleService = new VehicleService()
+const alertService = new AlertService()
 
-export default vehicleService
+export default alertService
