@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+
+
+
 class VehicleService {
 
 
@@ -18,15 +21,16 @@ class VehicleService {
         })
     }
 
+
     createVehicle(data) {
         return this.api.post('/create', data)
     }
-
-    getAllVehicles = () => {
-        return this.api.get('/allVehicles')
+    getAllVehicles = user_id => {
+        return this.api.get(`/allVehicles/${user_id}`)
     }
-    getOneVehicle = _id => {
-        return this.api.get(`/${_id}`)
+
+    getOneVehicle = vehicle_id => {
+        return this.api.get(`/${vehicle_id}`)
     }
     editOneVehicle = (data) => {
         return this.api.put(`/${data._id}`, data)

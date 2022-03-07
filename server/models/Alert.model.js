@@ -10,7 +10,7 @@ const alertSchema = new Schema({
             'HINCHADO DE RUEDAS', 'CAMBIO DE LIMPIA PARABRISAS', 'LIMPIEZA', 'SUSPENSIONES']
     },
 
-    createdAt: {
+    initializedAt: {
         type: Date,
         required: true
     },

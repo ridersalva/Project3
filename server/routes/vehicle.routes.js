@@ -7,11 +7,10 @@ const Vehicle = require("../models/Vehicle.model")
 ////////////////// L I S T  A L L ////////////////////////
 
 // router.get('/allvehicles', isAuthenticated, (req, res, next) => {
-router.get('/allVehicles', (req, res, next) => {
-
+router.get('/allVehicles/:user_id', (req, res, next) => {
+    const { user_id } = req.params
     Vehicle
-        .find({ owner: req.payload._id })
-        .select("name photo identifier")
+        .find({ owner: user_id })
         .then(result => res.json(result))
         .catch(err => res.status(500).json(err))
 })
@@ -20,10 +19,9 @@ router.get('/allVehicles', (req, res, next) => {
 
 // router.post("/create", isAuthenticated, (req, res, next) => {
 router.post("/create", (req, res, next) => {
-
-
+    const { user_id } = req.params
     Vehicle
-        .create({ ...req.body, owner: req.payload._id })
+        .create({ ...req.body })
         .then(result => res.status(200).json(result))
         .catch(err => res.status(500).json(err))
 })

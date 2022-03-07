@@ -1,21 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Navbar as NavigationBar, Nav, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
-import home from "./Icons/home.png"
-import bell from "./Icons/bell.png"
-import clip from "./Icons/clipboard.png"
+import home from "./icons/home.png"
+import bell from "./icons/bell.png"
+import clip from "./icons/clipboard.png"
+import { AuthContext } from '../../context/auth.context'
 
 
 function Navbar() {
+
+  const { user } = useContext(AuthContext)
+
+
   return (
-    <NavigationBar className='Nav' fixed="bottom">
+
+    <>{user ? <><NavigationBar className='Nav' fixed="bottom">
+
       <Nav className='Navv'>
         <Link to="/user/vehicles/" ><Image src={clip} alt='vehicles' /></Link>
         <Link to="/user/alerts">< Image src={bell} alt="alerts" /></Link>
         <Link to="/home"><Image src={home} alt='home' /></Link>
       </Nav>
-    </NavigationBar>
+
+    </NavigationBar></> : <></>}</>
+
+
   )
 }
 export default Navbar

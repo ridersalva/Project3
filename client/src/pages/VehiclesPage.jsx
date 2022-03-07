@@ -1,22 +1,71 @@
 import './Style.css'
-import VehicleCard from '../components/VehicleCard/VehicleCard'
-import { Container, Row, Col, Image } from 'react-bootstrap'
-
-
+import { useState, useEffect, useContext } from 'react'
+import vehicleService from '../services/vehicle.service'
+import VehicleList from '../components/VehicleElements/VehicleList'
+import { Container, Modal, Card } from 'react-bootstrap'
+import VehicleForm from '../components/VehicleElements/VehicleForm'
+import { AuthContext } from '../context/auth.context'
+import car from "../components/VehicleElements/car.png"
 
 const VehiclePage = () => {
 
+    const [currentVehicles, setCurrentVehicles] = useState([])
+    const [showVehicleModal, setShowVehicleModal] = useState(false)
+
+    const { isLoggedIn, user } = useContext(AuthContext)
+
+
+    useEffect(() => {
+        loadVehicles()
+    }, [])
+
+    const loadVehicles = () => {
+        vehicleService
+            .getAllVehicles(user._id)
+            .then(({ data }) => setCurrentVehicles(data))
+            .catch(err => console.log(err))
+    }
+
+    const deleteVehicle = (_id) => {
+        vehicleService
+
+            .deleteOneVehicle(_id)
+            .then(() => {
+                return vehicleService.getAllVehicles(user._id)
+            })
+            .then(({ data }) => setCurrentVehicles(data))
+            .catch(err => console.log(err))
+
+    }
+
+    const handleVehicleModalClose = () => setShowVehicleModal(false)
+    const handleVehicleModalOpen = () => setShowVehicleModal(true)
+
     return (
-        <Container >
-            <div className='tituloV'> <h1>Todos tus Vehículos</h1></div>
+        <>
+            <Container>
+                <h1>YOUR VEHICLES</h1>
 
-            <Row className='justify-content-center'>
+                <VehicleList currentVehicles={currentVehicles} deleteVehicle={deleteVehicle} />
 
-                <Col className='lg-4 col-md-12 mb-4 mb-lg-0'>
-                    <VehicleCard />
-                </Col>
-            </Row>
-        </Container>
+                {isLoggedIn && <Card onClick={handleVehicleModalOpen} className="CardV shadow-lg p-3 mb-5" style={{ width: '18rem' }}>
+                    <Card.Title style={{ alignSelf: "center" }}>ADD A VEHICLE</Card.Title>
+                    <Card.Img src={car} />
+                </Card>}
+                <hr />
+
+            </Container>
+
+            <Modal show={showVehicleModal} onHide={handleVehicleModalClose} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>New vehicle</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <VehicleForm closeVehicleModal={handleVehicleModalClose} refreshVehicles={loadVehicles} />
+                </Modal.Body>
+            </Modal>
+
+        </>
     )
 }
 

@@ -18,23 +18,11 @@ const vehicleSchema = new Schema(
 
         },
         purchaseDate: {
+            type: Date
+        },
+
+        licensePlate: {
             type: String
-        },
-        vehicleType: {
-            type: String,
-            enum: ['MOTOR', 'NOMOTOR'],
-            required: true
-        },
-        identifier: {
-            classType: {
-                type: String,
-                enum: ["License Plate", "Serial Nº"],
-                // required: true
-            },
-            value: {
-                type: String,
-                // required: true
-            }
         },
         owner: { type: Schema.Types.ObjectId, ref: 'User' },
     },
