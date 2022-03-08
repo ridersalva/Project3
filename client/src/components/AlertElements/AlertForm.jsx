@@ -19,25 +19,21 @@ const AlertForm = ({ closeAlertModal, refreshAlerts, vehicle, alert }) => {
 
     const { name, initializedAt, dueAt } = AlertData
 
-
     const handleInputChange = e => {
 
         const { value, name } = e.target
 
         setAlertData({
             ...AlertData,
-            [name]: value           // computed propery names
+            [name]: value
         })
     }
-
 
     const handleSubmit = e => {
 
         e.preventDefault()
 
         if (alert) {
-            console.log("LO QUE VIENE DE ARRIBA", alert)
-            console.log("LO QUE INTRODIZCO", AlertData)
             alertService
                 .editOneAlert(alert._id, AlertData)
                 .then(({ data }) => {
@@ -49,8 +45,6 @@ const AlertForm = ({ closeAlertModal, refreshAlerts, vehicle, alert }) => {
                 .catch(err => console.log(err))
         }
         else {
-            alert ? console.log(`LO QUE VIENE DE ARRIBA ${alert}`) : console.log(" DE ARRIBA NO VIENE NADA")
-            console.log("LO QUE INTRODIZCO", AlertData)
             alertService
                 .createAlert(AlertData)
                 .then(({ data }) => {
@@ -78,7 +72,9 @@ const AlertForm = ({ closeAlertModal, refreshAlerts, vehicle, alert }) => {
                 <option value='LIMPIEZA'>LIMPIEZA</option>
                 <option value='SUSPENSIONES'>SUSPENSIONES</option>
             </Form.Select>
+
             <hr />
+
             <Form.Group className="mb-3" controlId="initializedAt">
                 <Form.Label>Last maintenance</Form.Label>
                 <Form.Control type="date" value={initializedAt} onChange={handleInputChange} name="initializedAt" />

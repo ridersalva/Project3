@@ -39,7 +39,7 @@ const SignUpForm = () => {
             .then(({ data }) => {
                 setShowMessage(true)
                 setMessageInfo({ title: 'Éxito', desc: 'Te has registrado correctamente' })
-                navigate('/user')
+                navigate('/')
             })
             .catch(err => console.log(err))
     }

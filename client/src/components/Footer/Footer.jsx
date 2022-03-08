@@ -4,19 +4,20 @@ import { NavLink, Link } from 'react-router-dom'
 import './Footer.css'
 import logo from "./logo.png"
 import { AuthContext } from '../../context/auth.context'
-
+import { useNavigate } from 'react-router-dom'
 
 
 function Footer() {
 
   const { user } = useContext(AuthContext)
-
+  const navigate = useNavigate()
+  const logOut = () => navigate("/")
 
   return (
     <>{user ? <>
       <Navbar className='footer' fixed="top" variant="dark">
         <Container>
-          <NavLink to="/home" className="foot">
+          <NavLink to="/user" className="foot">
             <Image
               alt="logo"
               src={logo}
@@ -25,7 +26,7 @@ function Footer() {
             />
             <h1>Hello {user.name}</h1>
           </NavLink>
-
+          <Button variant="warning" onClick={logOut}>Log Out</Button>
         </Container>
       </Navbar>
 

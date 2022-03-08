@@ -4,7 +4,7 @@ import './VehicleElement.css'
 import alertService from "../../services/alert.service"
 import AlertForm from "../AlertElements/AlertForm"
 import AlertList from "../AlertElements/AlertList"
-import formatDate from "../../utils"
+import { formatDate } from "../../utils"
 
 
 const VehicleCard = ({ name, photo, description, purchaseDate, licensePlate, owner, _id, deleteVehicle }) => {
@@ -52,6 +52,7 @@ const VehicleCard = ({ name, photo, description, purchaseDate, licensePlate, own
 
 
             <AlertList currentAlerts={currentAlerts} refreshAlerts={loadAlerts} closeAlertModal={handleAlertModalClose} deleteAlert={deleteAlert} />
+
 
             <Button variant="warning" onClick={handleAlertModalOpen}>+</Button>
 

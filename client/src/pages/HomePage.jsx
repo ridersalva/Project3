@@ -1,36 +1,54 @@
-import React, { useState } from 'react'
-import moment from 'moment'
-import { Link } from 'react-router-dom'
-import { Button, Container, Row } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react'
+import AllAlertCalendar from '../components/CalendarElements/FullCalendar'
+import { Container, Row, Col } from 'react-bootstrap'
 import './Style.css'
-import Cal from '../components/Calendar2/Cal'
-import { useEffect } from 'react'
-
-import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
-import { Button, Container, Row } from 'react-bootstrap'
-import './Style.css'
-
-import Calendar from '../components/CalendarElements/FullCalendar'
-
-import Cal from "../components/CalendarElements/Cal"
-import AlertList from '../components/AlertElements/AlertList'
+import alertService from '../services/alert.service'
+import AllAlertList from '../components/AlertElements/AllAlertsList'
 
 
 const HomePage = () => {
-    const [value, setValue] = useState(moment())
+    const eventArr = []
+
+    const [currentEvents, setCurrentEvents] = useState([])
+    const [currentAlerts, setCurrentAlerts] = useState([])
 
 
-    const loadAlerts = (date) => {
-        //llamada al servicio de alertas para traer las que correspondan
+    useEffect(() => {
+        loadCurrentAlerts()
+    }, [])
+
+    const loadCurrentAlerts = () => {
+
+        alertService
+            .getUserAlerts()
+            .then(({ data }) => {
+
+                setCurrentAlerts(data)
+                data.forEach((elm) => {
+
+                    eventArr.push({
+                        title: elm.name, date: elm.dueAt.split('T')[0], backgroundColor: elm.vehicle.alertColor
+                    })
+                })
+            })
+            .then(() => setCurrentEvents(eventArr))
+            .catch(err => console.log(err))
     }
 
     return (
         <div className="Home">
-            <Container>
 
+            <Container>
                 <Row>
-                    <h1> Proximas Alertas</h1>
+                    <Col md={6}>
+                        <div className='calendar'>
+                            <AllAlertCalendar events={currentEvents} />
+                        </div>
+                    </Col>
+
+                    <Col md={6}>
+                        <AllAlertList alerts={currentAlerts} />
+                    </Col>
 
                 </Row>
             </Container>

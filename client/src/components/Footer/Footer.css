@@ -1,21 +1,21 @@
 .foot{
     
-    color: white;
-    text-decoration: none;
-    height: 80px;
-    display: flex;
-   justify-content: left;
-  width: 100%;
+color: white;
+text-decoration: none;
+height: 80px;
+display: flex;
+justify-content: left;
+width: 100%;
 }
 .foot h1{
-    margin: 10px;
+margin: 10px;
 }
 .footer{
 background-color: #8b9395;
 }
 .footer button{
-    background-color: transparent;
-    border-color: white;
-    margin: 8px;
-    width: 100px;
+background-color: transparent;
+border-color: white;
+margin: 8px;
+width: 100px;
 }

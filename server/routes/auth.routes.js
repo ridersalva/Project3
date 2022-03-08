@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
 const jwt = require('jsonwebtoken')
 const { isAuthenticated } = require('./../middlewares/jwt.middleware')
-
+const transporter = require('../config/transporter.config')
 const router = express.Router()
 const saltRounds = 10
 
@@ -49,6 +49,14 @@ router.post('/signup', (req, res, next) => {
             const user = { email, name, _id }
 
             res.status(201).json({ user })
+
+            transporter.sendMail({
+                from: "imdbprojectteam@gmail.com",
+                to: user.email,
+                subject: `Welcome to AutoAlert!`,
+                text: `${user.name}, welcome to AutoAlert, your personalized reminder service! This is the mail where you are going to receive all the notifications! FUEGOTE!!!`,
+                html: "<p>" + `${user.name},  welcome to AutoAlert, your personalized reminder service! This is the mail where you are going to receive all the notifications! FUEGOTE!!!` + "</p>"
+            })
         })
         .catch(err => {
             console.log(err)

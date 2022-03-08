@@ -3,24 +3,26 @@ import vehicleService from "../../services/vehicle.service"
 import { Button, Form } from 'react-bootstrap'
 import { MessageContext } from "../../context/userMessage.context"
 import { AuthContext } from "../../context/auth.context"
+import uploadService from "../../services/upload.service"
 
 
 const VehicleForm = ({ closeVehicleModal, refreshVehicles }) => {
 
     const { setShowMessage, setMessageInfo } = useContext(MessageContext)
     const { user } = useContext(AuthContext)
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const [vehicleData, setVehicleData] = useState({
         name: '',
-        photo: '',
+        photo: 'https://media.istockphoto.com/vectors/red-cartoon-car-flat-vector-illustration-icon-design-png-vector-id1326924480?k=20&m=1326924480&s=612x612&w=0&h=ezmH2drfUVNzgqKoAXpclpeY4PHd3wzHsbk3eil-ME8=',
         description: '',
         purchaseDate: new Date().toISOString().split('T')[0],
         licensePlate: '',
+        alertColor: "#FF7300",
         owner: user
     })
 
-    const { name, photo, description, purchaseDate, licensePlate, owner } = vehicleData
-
+    const { name, photo, description, purchaseDate, licensePlate, alertColor } = vehicleData
 
     const handleInputChange = e => {
 
@@ -28,10 +30,23 @@ const VehicleForm = ({ closeVehicleModal, refreshVehicles }) => {
 
         setVehicleData({
             ...vehicleData,
-            [name]: value           // computed propery names
+            [name]: value
         })
     }
 
+    const uploadVehicleImage = e => {
+        setLoadingImage(true)
+        const uploadData = new FormData()
+        uploadData.append('imageData', e.target.files[0])
+        uploadService
+            .uploadImage(uploadData)
+            .then(({ data }) => {
+                setLoadingImage(false)
+                setVehicleData({ ...vehicleData, photo: data.cloudinary_url })
+                console.log(vehicleData)
+            })
+            .catch(err => console.log(err))
+    }
 
     const handleSubmit = e => {
 
@@ -58,7 +73,7 @@ const VehicleForm = ({ closeVehicleModal, refreshVehicles }) => {
 
             <Form.Group className="mb-3" controlId="photo">
                 <Form.Label>Image</Form.Label>
-                <Form.Control type="text" value={photo} onChange={handleInputChange} name="photo" placeholder="Upload a photo" />
+                <Form.Control type="file" onChange={uploadVehicleImage} name="photo" placeholder="Upload a photo" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="description">
@@ -77,9 +92,14 @@ const VehicleForm = ({ closeVehicleModal, refreshVehicles }) => {
                 <Form.Control type="text" value={licensePlate} onChange={handleInputChange} name="licensePlate" placeholder="Your license plate" />
             </Form.Group>
 
-
+            <Form.Group className="mb-3" controlId="alertColor">
+                <Form.Label >Reminder Color</Form.Label>
+                <Form.Control
+                    type="color" value={alertColor} onChange={handleInputChange} name="alertColor" />
+            </Form.Group>
+            <br />
             <div className="d-grid gap-2">
-                <Button variant="warning" type="submit">Create vehicle</Button>
+                <Button variant="warning" type="submit" disabled={loadingImage}> {loadingImage ? 'Cargando imagen' : 'Create vehicle'}</Button>
             </div>
 
         </Form >

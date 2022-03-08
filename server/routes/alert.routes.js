@@ -7,10 +7,10 @@ const Alert = require("../models/Alert.model")
 
 ///////////////// C R E A T E  O N E /////////////////////////
 
-router.post("/create", (req, res) => {
+router.post("/create", isAuthenticated, (req, res) => {
 
     Alert
-        .create({ ...req.body })
+        .create(req.body)
         .then(result => res.status(200).json(result))
         .catch(err => res.status(500).json(err))
 })
@@ -26,18 +26,18 @@ router.get('/allAlerts', isAuthenticated, (req, res, next) => {
         .find({ owner: req.payload._id })
         .then(result => {
             result.forEach(elm => {
-                allPromise.push(Alert.find({ vehicle: elm._id }))
+                allPromise.push(Alert.find({ vehicle: elm._id }).populate("vehicle"))
             })
             return Promise.all(allPromise)
         })
-        .then(allAlerts => res.json(allAlerts))///pain point
+        .then(allAlerts => res.json(allAlerts.flat()))
         .catch(err => res.status(500).json(err))
 })
 
 
 ///////// L I S T  A L E R T S  O F  O N E  V E H I C L E //////
 
-router.get('/vehicle/:vehicle_id', (req, res, next) => {
+router.get('/vehicle/:vehicle_id', isAuthenticated, (req, res, next) => {
 
     const { vehicle_id } = req.params
 
@@ -48,7 +48,7 @@ router.get('/vehicle/:vehicle_id', (req, res, next) => {
 })
 /////////// L I S T  O N E   ////////
 
-router.get('/:alert_id', (req, res, next) => {
+router.get('/:alert_id', isAuthenticated, (req, res, next) => {
 
     const { alert_id } = req.params
 
@@ -60,12 +60,12 @@ router.get('/:alert_id', (req, res, next) => {
 
 ///////////////// E D I T  O N E /////////////////////////
 
-router.put('/:alert_id', (req, res, next) => {
+router.put('/:alert_id', isAuthenticated, (req, res, next) => {
 
     const { alert_id } = req.params
 
     Alert
-        .findByIdAndUpdate(alert_id, { ...req.body }, { new: true })
+        .findByIdAndUpdate(alert_id, req.body, { new: true })
         .then(result => res.status(200).json(result))
         .catch(err => res.status(500).json(err))
 
@@ -74,7 +74,7 @@ router.put('/:alert_id', (req, res, next) => {
 
 /////////////////  D E L E T E   O N E /////////////////////////
 
-router.delete("/:alert_id", (req, res, next) => {
+router.delete("/:alert_id", isAuthenticated, (req, res, next) => {
 
     const { alert_id } = req.params
 

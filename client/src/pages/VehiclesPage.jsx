@@ -28,14 +28,9 @@ const VehiclePage = () => {
 
     const deleteVehicle = (_id) => {
         vehicleService
-
             .deleteOneVehicle(_id)
-            .then(() => {
-                return vehicleService.getAllVehicles(user._id)
-            })
-            .then(({ data }) => setCurrentVehicles(data))
+            .then(() => loadVehicles())
             .catch(err => console.log(err))
-
     }
 
     const handleVehicleModalClose = () => setShowVehicleModal(false)

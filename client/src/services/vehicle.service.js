@@ -25,8 +25,8 @@ class VehicleService {
     createVehicle(data) {
         return this.api.post('/create', data)
     }
-    getAllVehicles = user_id => {
-        return this.api.get(`/allVehicles/${user_id}`)
+    getAllVehicles = () => {
+        return this.api.get(`/allVehicles`)
     }
 
     getOneVehicle = vehicle_id => {

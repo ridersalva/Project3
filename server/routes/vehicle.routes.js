@@ -6,22 +6,20 @@ const Vehicle = require("../models/Vehicle.model")
 
 ////////////////// L I S T  A L L ////////////////////////
 
-// router.get('/allvehicles', isAuthenticated, (req, res, next) => {
-router.get('/allVehicles/:user_id', (req, res, next) => {
-    const { user_id } = req.params
+router.get('/allvehicles', isAuthenticated, (req, res, next) => {
+
     Vehicle
-        .find({ owner: user_id })
+        .find({ owner: req.payload._id })
         .then(result => res.json(result))
         .catch(err => res.status(500).json(err))
 })
 
 ///////////////// C R E A T E  O N E /////////////////////////
 
-// router.post("/create", isAuthenticated, (req, res, next) => {
-router.post("/create", (req, res, next) => {
-    const { user_id } = req.params
+router.post("/create", isAuthenticated, (req, res, next) => {
+
     Vehicle
-        .create({ ...req.body })
+        .create(req.body)
         .then(result => res.status(200).json(result))
         .catch(err => res.status(500).json(err))
 })
@@ -40,7 +38,7 @@ router.get('/:vehicle_id', (req, res, next) => {
 
 ///////////////// E D I T  O N E /////////////////////////
 
-router.put("/:vehicle_id", (req, res, next) => {
+router.put("/:vehicle_id", isAuthenticated, (req, res, next) => {
 
     const { vehicle_id } = req.params
 
@@ -48,11 +46,9 @@ router.put("/:vehicle_id", (req, res, next) => {
         .findByIdAndUpdate(vehicle_id, { ...req.body }, { new: true })
         .then(result => res.status(200).json(result))
         .catch(err => res.status(500).json(err))
-
-
 })
 
-router.delete("/:vehicle_id", (req, res, next) => {
+router.delete("/:vehicle_id", isAuthenticated, (req, res, next) => {
 
     const { vehicle_id } = req.params
 

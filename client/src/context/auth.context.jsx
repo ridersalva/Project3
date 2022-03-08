@@ -22,11 +22,10 @@ function AuthProviderWrapper(props) {
     const getToken = () => {
         return localStorage.getItem("authToken")
     }
-
-
     const authenticateUser = () => {
 
         const storedToken = getToken()
+        setIsLoading(true)
 
         if (!storedToken) {
             logOutUser()

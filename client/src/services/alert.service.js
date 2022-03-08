@@ -29,14 +29,14 @@ class AlertService {
     getVehicleAlerts = (vehicle_id) => {
         return this.api.get(`/vehicle/${vehicle_id}`)
     }
-    getOneAlert = _id => {
-        return this.api.get(`/${_id}`)
+    getOneAlert = alert_id => {
+        return this.api.get(`/${alert_id}`)
     }
-    editOneAlert = (_id, data) => {
-        return this.api.put(`/${_id}`, data)
+    editOneAlert = (alert_id, data) => {
+        return this.api.put(`/${alert_id}`, data)
     }
-    deleteOneAlert = _id => {
-        return this.api.delete(`/${_id}`)
+    deleteOneAlert = alert_id => {
+        return this.api.delete(`/${alert_id}`)
     }
 
 }

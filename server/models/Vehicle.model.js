@@ -25,6 +25,8 @@ const vehicleSchema = new Schema(
             type: String
         },
         owner: { type: Schema.Types.ObjectId, ref: 'User' },
+
+        alertColor: String
     },
     {
         timestamps: true,

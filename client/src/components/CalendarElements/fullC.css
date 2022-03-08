@@ -1,0 +1,10 @@
+.full{
+    margin: 50px;
+    width: 500px;
+    height: 500px;
+    background-color: #8b9395;
+    border-radius: 18px;
+}
+.fc .fc-toolbar-title{
+    margin: 10px;
+}

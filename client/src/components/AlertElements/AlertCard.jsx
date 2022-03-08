@@ -1,6 +1,6 @@
 import { Button, ListGroup, Modal } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import formatDate from "../../utils";
+import { useState } from "react";
+import { formatDate } from "../../utils";
 import AlertForm from "./AlertForm";
 
 
@@ -10,21 +10,11 @@ const AlertCard = ({ name, initializedAt, dueAt, _id, deleteAlert, refreshAlerts
 
     const [editing, setEditing] = useState(false)
 
-    // useEffect(() => {
-    //     loadAlerts()
-    // }, [])
-
     const closeAlertModal = () => setEditing(false)
 
 
-
-
-    function alertClicked() {
-        alert('You clicked');
-    }
     return (
         <>
-
             <ListGroup.Item key={_id}> <div className="alertDetails" onClick={() => setEditing(true)}>
 
                 <p>{name}</p>
@@ -43,8 +33,6 @@ const AlertCard = ({ name, initializedAt, dueAt, _id, deleteAlert, refreshAlerts
                     <AlertForm closeAlertModal={closeAlertModal} refreshAlerts={refreshAlerts} alert={alert} />
                 </Modal.Body>
             </Modal>
-
-
         </>
     )
 }

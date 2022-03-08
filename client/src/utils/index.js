@@ -5,4 +5,9 @@ const formatDate = (Date) => {
     return formated
 }
 
-export default formatDate
+const reduceDate = (Date) => {
+    const reduced = Date.split('T')[0]
+    return reduced
+}
+
+export { formatDate, reduceDate }
