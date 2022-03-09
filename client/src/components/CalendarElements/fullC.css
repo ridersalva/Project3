@@ -1,10 +1,28 @@
 .full{
-    margin: 50px;
-    width: 500px;
-    height: 500px;
-    background-color: #8b9395;
+    margin: 60px 0px 0px 2px;
+    width: 700px;
+   min-height:500px;
+    background-color: rgba(0,0,0, .3);
     border-radius: 18px;
+    justify-content: center;
 }
 .fc .fc-toolbar-title{
     margin: 10px;
+}
+.fc .fc-toolbar.fc-header-toolbar{
+    margin-right: 70px;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.fc-daygrid{
+    width: 600px;
+    height: 480px;
+    margin-left: 30px;
+  
+   
+} 
+.fc-scrollgrid{
+width: 500px;
+height: 500px;
 }

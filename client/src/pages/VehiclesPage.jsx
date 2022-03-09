@@ -39,7 +39,7 @@ const VehiclePage = () => {
     return (
         <>
             <Container>
-                <h1>YOUR VEHICLES</h1>
+                <h1 className='h1'>All Vehicles</h1>
 
                 <VehicleList currentVehicles={currentVehicles} deleteVehicle={deleteVehicle} />
 

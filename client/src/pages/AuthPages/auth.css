@@ -1,0 +1,14 @@
+.Log{
+    justify-content: center;
+}
+form{
+    margin-top: 30px;
+    padding: 100px;
+}
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+.btn-info{
+    background-color: aliceblue;
+}

@@ -1,4 +1,10 @@
 .alertDetails :hover{
     cursor: pointer;
-   
+}
+.list-group{
+padding-top: 50px;
+max-height: fit-content;
+width: 100%;
+border-radius:17px;
+margin: 8px 0px 90px;
 }

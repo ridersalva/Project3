@@ -12,8 +12,6 @@ const AlertList = ({ currentAlerts, deleteAlert, refreshAlerts, closeAlertModal 
                 } closeAlertModal={closeAlertModal} />
             })}
         </ListGroup>
-
-
     )
 }
 

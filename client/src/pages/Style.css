@@ -1,18 +1,9 @@
-.Home{
-  
-    height: 100vh;
-}
-.start {
-    color: rgb(29, 27, 27);
-    background-color: transparent;
-    border-color:  solid 3px black;
-    font-size: 30px;
-}
+
+
 .App{
     display:flex;
    justify-items: center;
 }
-.calendar{
-    width: 100%;
-    height: 150px;
+.h1{
+    padding: 30px;
 }

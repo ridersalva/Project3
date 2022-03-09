@@ -36,23 +36,17 @@ const HomePage = () => {
     }
 
     return (
-        <div className="Home">
+      
 
             <Container>
+          
                 <Row>
-                    <Col md={6}>
-                        <div className='calendar'>
                             <AllAlertCalendar events={currentEvents} />
-                        </div>
-                    </Col>
-
-                    <Col md={6}>
                         <AllAlertList alerts={currentAlerts} />
-                    </Col>
-
                 </Row>
+        
             </Container>
-        </div>
+      
     )
 }
 

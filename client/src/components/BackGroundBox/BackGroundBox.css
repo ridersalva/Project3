@@ -4,11 +4,9 @@
   justify-content: center;
   color: azure;
   box-shadow: 0 0 25px 0px black;
-  /* border-bottom: #282c34 solid 15px; */
-  /* border-right:#282c34 solid 15px ; */
-  height: 100%;
-margin-top: 150px;
-margin-bottom: 150px;
+  min-height: fit-content;
+  margin-top: 150px;
+  margin-bottom: 150px;
   margin-left: 50px;
   margin-right: 50px;
 }

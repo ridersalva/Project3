@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import { Navbar as NavigationBar, Nav, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
-import home from "./icons/home.png"
-import bell from "./icons/bell.png"
-import clip from "./icons/clipboard.png"
+import home from "./Icons/home.png"
+import bell from "./Icons/bell.png"
+import clip from "./Icons/clipboard.png"
 import { AuthContext } from '../../context/auth.context'
 
 
