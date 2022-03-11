@@ -6,7 +6,7 @@ function BackGroundBox(props) {
   return (
 
     <div className='box'>
-      <Container>
+      <Container fluid="md">
         {props.children}
       </Container>
     </div>

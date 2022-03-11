@@ -1,67 +1,90 @@
+
+import vehicleService from "../services/vehicle.service"
+import { useState, useContext, useEffect } from "react"
+import { AuthContext } from "../context/auth.context"
+import { Container, Row, Modal } from "react-bootstrap"
+import VehicleDummy from "../components/VehicleElements/VehicleDummy"
+import VehicleList from "../components/VehicleElements/VehicleList"
+import VehicleCreationForm from "../components/VehicleElements/VehicleCreationForm"
+import VehicleEditionForm from "../components/VehicleElements/VehicleEditionForm"
 import './Style.css'
-import { useState, useEffect, useContext } from 'react'
-import vehicleService from '../services/vehicle.service'
-import VehicleList from '../components/VehicleElements/VehicleList'
-import { Container, Modal, Card } from 'react-bootstrap'
-import VehicleForm from '../components/VehicleElements/VehicleForm'
-import { AuthContext } from '../context/auth.context'
-import car from "../components/VehicleElements/car.png"
 
 const VehiclePage = () => {
 
-    const [currentVehicles, setCurrentVehicles] = useState([])
-    const [showVehicleModal, setShowVehicleModal] = useState(false)
+    const { user } = useContext(AuthContext)
 
-    const { isLoggedIn, user } = useContext(AuthContext)
+    const [allVehicles, setAllVehicles] = useState([])
+    const [modal, setModal] = useState(false)
+    const [editing, setEditing] = useState(false)
+    const [vehicleToEdit, setVehicleToEdit] = useState(undefined)
 
+
+    const closeModal = () => {
+        setModal(false)
+        setEditing(false)
+    }
+    const openModal = () => setModal(true)
 
     useEffect(() => {
         loadVehicles()
-    }, [])
+    }, [user])
 
     const loadVehicles = () => {
+
         vehicleService
-            .getAllVehicles(user._id)
-            .then(({ data }) => setCurrentVehicles(data))
+            .getAllVehicles()
+            .then(({ data }) => {
+                setAllVehicles(data)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const editVehicle = (_id) => {
+
+        vehicleService
+            .getOneVehicle(_id)
+            .then(({ data }) => {
+                setVehicleToEdit(data)
+                setEditing(true)
+                setModal(true)
+            })
             .catch(err => console.log(err))
     }
 
     const deleteVehicle = (_id) => {
+
         vehicleService
             .deleteOneVehicle(_id)
             .then(() => loadVehicles())
             .catch(err => console.log(err))
     }
 
-    const handleVehicleModalClose = () => setShowVehicleModal(false)
-    const handleVehicleModalOpen = () => setShowVehicleModal(true)
 
-    return (
-        <>
-            <Container>
-                <h1 className='h1'>All Vehicles</h1>
 
-                <VehicleList currentVehicles={currentVehicles} deleteVehicle={deleteVehicle} />
 
-                {isLoggedIn && <Card onClick={handleVehicleModalOpen} className="CardV shadow-lg p-3 mb-5" style={{ width: '18rem' }}>
-                    <Card.Title style={{ alignSelf: "center" }}>ADD A VEHICLE</Card.Title>
-                    <Card.Img src={car} />
-                </Card>}
-                <hr />
+    return (<>
 
-            </Container>
+        <Container>
+            <Row>
+                <VehicleList allVehicles={allVehicles} deleteVehicle={deleteVehicle} editVehicle={editVehicle} />
+                <VehicleDummy openModal={openModal} />
+            </Row>
+        </Container>
 
-            <Modal show={showVehicleModal} onHide={handleVehicleModalClose} size="lg">
-                <Modal.Header closeButton>
-                    <Modal.Title>New vehicle</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <VehicleForm closeVehicleModal={handleVehicleModalClose} refreshVehicles={loadVehicles} />
-                </Modal.Body>
-            </Modal>
+        <Modal show={modal} onHide={closeModal} size="md">
+            <Modal.Header closeButton>
+                <Modal.Title>{editing ? "Edit vehicle" : "Create vehicle"}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                {!editing ? <VehicleCreationForm closeModal={closeModal} loadVehicles={loadVehicles} />
+                    : <VehicleEditionForm closeModal={closeModal} loadVehicles={loadVehicles} vehicleToEdit={vehicleToEdit} />}
+            </Modal.Body>
+        </Modal>
 
-        </>
+      
+    </>
     )
+
 }
 
 export default VehiclePage

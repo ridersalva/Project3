@@ -5,6 +5,8 @@
     margin: 50px;
      color:#000000;
      text-decoration: none;
+    min-width: 200px;
+    max-height: 700px; 
 }
 a.card-link{
     text-decoration: none;
@@ -13,4 +15,32 @@ a.card-link{
 
 .details{
   font-size: 0.9em;
+}
+.btn-primary{
+  align-items: center;
+}
+.btn-primary p{
+  margin-top: -9px;
+  margin-right: -1px;
+ font-size: 1.5em;
+}
+.help{
+  width: 8px;
+  margin-bottom: 10px;
+  margin-right: 2px;
+}
+.cardButtons{
+  justify-content: space-around;
+  margin: 3px;
+}
+.zoom:hover{
+transform:scale(1.1);
+cursor: pointer;
+}
+.zoom{
+  transition: all 500ms ease-in-out;
+}
+.BadgeCr{
+margin-left: 250px;
+
 }

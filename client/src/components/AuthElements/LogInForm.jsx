@@ -61,11 +61,11 @@ const LogInPage = () => {
                 <Form.Control className="input" type="password" name="password" placeholder="Enter your password" value={`${loginForm.password}`} onChange={handleInputChange} />
             </Form.Group>
 
-            <Button className="button" variant="info" type="submit">
+            <Button className="button"  type="submit">
                 Log In
             </Button>
             <br />
-            <Form.Text><span>Do not have an account yet? </span></Form.Text>
+            <Form.Text className="acct"><span>Do not have an account yet? </span></Form.Text>
             <Link to="/register"> Sign up!</Link>
         </Form>
     )

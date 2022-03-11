@@ -1,15 +1,32 @@
-.Navv{
-background-color: #8b9395;
+ .active{
+
 display: flex;
-justify-content: space-around;
-align-items: center;
+justify-content: right;
  width: 100%;
+ height: 100px;
+
+ transition: 0.5s linear;
+}
+.hidden{
+justify-content: right;
+ width: 100%;
+display: flex;
+ transition: 0.5s linear;
+ top:-180px;
+ position: fixed;
  height: 100px;
 }
 .Nav{
     padding: 0px;
+    border-top: 2px solid wheat;
+margin-right: 20px;
+margin-left: 20px;
 }
-img{
+.Logg{
     width: 80px;
-    
+    margin-right: 25px;
+}
+p{
+    font-size: 1.5em;
+    margin-top: 26px;
 }

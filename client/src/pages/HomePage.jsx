@@ -36,17 +36,21 @@ const HomePage = () => {
     }
 
     return (
-      
 
-            <Container>
-          
-                <Row>
-                            <AllAlertCalendar events={currentEvents} />
-                        <AllAlertList alerts={currentAlerts} />
-                </Row>
-        
-            </Container>
-      
+
+        <Container>
+
+            <Row>
+                <Col sm={12} md={12}>
+                    <AllAlertCalendar events={currentEvents} />
+<div >
+                        <AllAlertList className='listt' alerts={currentAlerts} />
+                    </div>
+                </Col>
+            </Row>
+
+        </Container>
+
     )
 }
 

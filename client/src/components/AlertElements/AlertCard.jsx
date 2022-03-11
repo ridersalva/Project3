@@ -1,39 +1,35 @@
-import { Button, ListGroup, Modal } from "react-bootstrap";
-import { useState } from "react";
+import { Button, ListGroup, Row, Col } from "react-bootstrap";
+
 import { formatDate } from "../../utils";
-import AlertForm from "./AlertForm";
+
+import './AlertElement.css'
 
 
-const AlertCard = ({ name, initializedAt, dueAt, _id, deleteAlert, refreshAlerts }) => {
+const AlertCard = ({ name, initializedAt, dueAt, _id, vehicle, deleteAlert, renderEditForm }) => {
 
-    const alert = { name, initializedAt, dueAt, _id }
-
-    const [editing, setEditing] = useState(false)
-
-    const closeAlertModal = () => setEditing(false)
+    const alert = { name, initializedAt, dueAt, _id, vehicle }
 
 
     return (
-        <>
-            <ListGroup.Item key={_id}> <div className="alertDetails" onClick={() => setEditing(true)}>
+        <ListGroup.Item className='AllAL '>
 
-                <p>{name}</p>
-                <p>{formatDate(initializedAt)}</p>
-                <p>{formatDate(dueAt)}</p>
-
+            <div style={{ width: "30%" }} >
+                <h3>{name} </h3>
             </div>
-                <Button variant="danger" onClick={() => deleteAlert(_id)}>X</Button>
-            </ListGroup.Item>
 
-            <Modal show={editing} onHide={closeAlertModal} size="lg">
-                <Modal.Header closeButton>
-                    <Modal.Title>edit Alert</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <AlertForm closeAlertModal={closeAlertModal} refreshAlerts={refreshAlerts} alert={alert} />
-                </Modal.Body>
-            </Modal>
-        </>
+
+            <div style={{ width: "30%" }}>
+                <p className="dueAt">{formatDate(dueAt)}</p>
+            </div>
+
+
+            <div style={{ width: "30%", display: "flex", justifyContent: "flex-end" }}>
+                {name !== "ITV" && <Button onClick={() => renderEditForm(alert)}>Edit</Button>}
+                {name !== "ITV" && <Button onClick={() => deleteAlert(_id)}>Delete</Button>}
+            </div>
+
+
+        </ListGroup.Item >
     )
 }
 

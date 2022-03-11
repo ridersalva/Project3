@@ -1,19 +1,19 @@
 import { ListGroup } from 'react-bootstrap'
 import { reduceDate } from "../../utils/index"
-import './AlertElement.css'
+import './AllAlert.css'
 
 const AllAlertList = ({ alerts }) => {
 
     return (
-        <ListGroup >
+        <ListGroup>
             {alerts.map(elm => {
 
                 return <ListGroup.Item key={elm._id}>
-                    <h3>{elm.name}</h3>
-                    <br></br>
-                    <h5>{reduceDate(elm.dueAt)}</h5>
-                    <br></br>
-                    <h5>{elm.vehicle.name}</h5>
+                    <div style={{ width: "30%",textAlign:"center" }}> <h3>{elm.name}</h3></div>
+                    <div style={{ width: "30%" ,textAlign:"center"}}><h5 className='HH5'>{reduceDate(elm.dueAt)}</h5></div>
+                    <div style={{ width: "30%" ,textAlign:"center"}}><h5>{elm.vehicle.name}</h5></div>
+
+
                 </ListGroup.Item >
             })}
 

@@ -2,9 +2,7 @@
     padding-top: 70px;
     padding-bottom: 70px;
 }
-.btn-info{
-    border-color: #fff;
-}
+
 .img-fluid {
     width: 40%;
     margin-bottom: 10%;
@@ -12,7 +10,7 @@
 
 .label {
     color: white;
-    font-size: 1em;
+    font-size: 1.3em;
 }
 
 .button {
@@ -21,12 +19,17 @@
     color: #fff;
     padding: 0.6em 6em;
     margin: 1em 0;
+    border-color: #fff;
 }
+.button:hover{
+  background-color: white;
+  border-color: #fff;
 
+}
 .input {
     background-color: white;
     border-radius: 50px solid white;
-    color: #fff;
+    color: rgb(92, 90, 90);
 }
 
 .input::placeholder {
@@ -34,4 +37,7 @@
 }
 .lForm a{
     text-decoration: none;
+}
+.form-text{
+    font-size: 1em;
 }

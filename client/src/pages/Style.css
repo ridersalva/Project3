@@ -7,3 +7,7 @@
 .h1{
     padding: 30px;
 }
+
+.blur{ color: transparent;
+        text-shadow: 0 0 8px #000;
+    }

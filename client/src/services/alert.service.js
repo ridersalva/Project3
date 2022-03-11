@@ -38,6 +38,9 @@ class AlertService {
     deleteOneAlert = alert_id => {
         return this.api.delete(`/${alert_id}`)
     }
+    sendEmail = contactData =>{
+        return this.api.post('/contact', contactData)
+    }
 
 }
 

@@ -1,0 +1,22 @@
+.Ger{
+    width: 100%;
+    margin-top: 150px;
+}
+.rezo{
+    width: 1200px;
+    height: 500px;
+  margin-top: 100px;
+margin-left:100px;
+align-items: center;
+
+}
+.rezo h3{
+  font-size: 5em;
+}
+.rezo h2{
+  font-size: 6em;
+}
+
+h2{
+    margin-left: 300px;
+}
